@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Indra WebApparel - Deploy to EC2
+name: CI/CD Pipeline - Indra WebApparel
 
 on:
   push:
@@ -46,7 +46,7 @@ jobs:
               -o ServerAliveCountMax=10 \
               -o ConnectTimeout=30 \
               ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} \
-              'bash /home/ubuntu/scripts/start-app.sh 2>&1 | tee /home/ubuntu/deploy.log'
+              'bash /home/ec2-user/scripts/start-app.sh 2>&1 | tee /home/ec2-user/deploy.log'
 
       - name: Verify deployment
         run: |
