@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Indra WebApparel Deploy
+name: CI/CD Pipeline - Indra WebApparel Deploy EC2
 
 on:
   push:
