@@ -323,7 +323,7 @@ function OrderDetails({
         </div>
 
         <div className="md:col-span-2">
-          <label className="text-sm font-medium">Tracking URL</label>
+          <label className="text-sm font-medium">Tracking URI</label>
           <input
             value={trackingUrl}
             onChange={(e) => setTrackingUrl(e.target.value)}
