@@ -9,15 +9,16 @@ jobs:
   deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup SSH Agent
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+      - name: Setup .pem key
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > /tmp/deploy-key.pem
+          chmod 400 /tmp/deploy-key.pem
 
       - name: Add EC2 to known hosts
         run: |
@@ -26,6 +27,7 @@ jobs:
       - name: Copy code to EC2
         run: |
           rsync -avz --delete \
+            -e "ssh -i /tmp/deploy-key.pem -o StrictHostKeyChecking=no" \
             --exclude='.git' \
             --exclude='node_modules' \
             --exclude='.next' \
@@ -35,16 +37,22 @@ jobs:
 
       - name: Run deployment script on EC2
         run: |
-          ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=10 \
-            ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} \
-            'nohup bash /home/ubuntu/scripts/start-app.sh > /home/ubuntu/deploy.log 2>&1 & 
-             DEPLOY_PID=$!
-             echo "Deploy started with PID $DEPLOY_PID"
-             wait $DEPLOY_PID
-             echo "Deploy finished"'
+          ssh -i /tmp/deploy-key.pem \
+              -o StrictHostKeyChecking=no \
+              -o ServerAliveInterval=60 \
+              -o ServerAliveCountMax=10 \
+              -o ConnectTimeout=30 \
+              ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} \
+              'bash /home/ubuntu/scripts/start-app.sh 2>&1 | tee /home/ubuntu/deploy.log'
 
       - name: Verify deployment
         run: |
           sleep 10
-          ssh ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} \
-            'pm2 status indra-webapparel && echo "✅ Deployment successful!"'
+          ssh -i /tmp/deploy-key.pem \
+              -o StrictHostKeyChecking=no \
+              ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} \
+              'pm2 status indra-webapparel && echo "✅ Deployment successful!"'
+
+      - name: Cleanup .pem key
+        if: always()
+        run: rm -f /tmp/deploy-key.pem
