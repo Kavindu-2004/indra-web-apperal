@@ -35,8 +35,13 @@ jobs:
 
       - name: Run deployment script on EC2
         run: |
-          ssh ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} \
-            'bash /home/ubuntu/scripts/start-app.sh'
+          ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=10 \
+            ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} \
+            'nohup bash /home/ubuntu/scripts/start-app.sh > /home/ubuntu/deploy.log 2>&1 & 
+             DEPLOY_PID=$!
+             echo "Deploy started with PID $DEPLOY_PID"
+             wait $DEPLOY_PID
+             echo "Deploy finished"'
 
       - name: Verify deployment
         run: |
