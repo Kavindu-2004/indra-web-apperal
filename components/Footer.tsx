@@ -7,6 +7,7 @@ export default function Footer() {
       {/* Top section */}
       <div className="max-w-7xl mx-auto px-6 py-14">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+          
           {/* Shop By Category */}
           <div className="space-y-4">
             <h3 className="font-semibold">Shop By Category</h3>
@@ -39,18 +40,19 @@ export default function Footer() {
               <li><Link className="hover:text-black" href="/terms">Terms & Conditions</Link></li>
               <li><Link className="hover:text-black" href="/privacy">Privacy Policy</Link></li>
               <li><Link className="hover:text-black" href="/returns">Shipping & Returns</Link></li>
-              <li><Link className="hover:text-black" href="/track">Track Orders</Link></li>
+              <li><Link className="hover:text-black" href="/account/track">Track Orders</Link></li>
             </ul>
           </div>
 
-          {/* Brand */}
+          {/* Brand (Cleaned) */}
           <div className="space-y-4">
             <h3 className="font-semibold">Shop By Brand</h3>
             <ul className="space-y-3 text-sm text-gray-700">
-              <li><Link className="hover:text-black" href="/brand/indra">Indra Dress Point</Link></li>
-              <li><Link className="hover:text-black" href="/brand/scylla-zelus">Scylla Zelus</Link></li>
-              <li><Link className="hover:text-black" href="/brand/redvers-buller">Redvers Buller</Link></li>
-              <li><Link className="hover:text-black" href="/brand/eighty">EIGHTY %</Link></li>
+              <li>
+                <Link className="hover:text-black" href="/brand/indra">
+                  Indra Dress Point
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -77,14 +79,18 @@ export default function Footer() {
 
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="#"
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
                 className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-50"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
                 className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-50"
                 aria-label="Instagram"
               >
@@ -92,6 +98,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
+
         </div>
       </div>
 
