@@ -28,7 +28,6 @@
 - [Database Schema](#-database-schema)
 - [Scripts](#-scripts)
 - [Deployment](#-deployment)
-- [Contributing](#-contributing)
 - [License](#-license)
 
 ---
@@ -303,30 +302,8 @@ The recommended way to deploy is via **Vercel**:
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-```bash
-# 1. Fork the repository and clone your fork
-git clone https://github.com/YOUR_USERNAME/indra-web-apperal.git
-
-# 2. Create a feature branch
-git checkout -b feature/your-feature-name
-
-# 3. Commit your changes with a clear message
-git commit -m "feat: add your feature"
-
-# 4. Push and open a Pull Request
-git push origin feature/your-feature-name
-```
-
-Please make sure your code passes linting (`npm run lint`) before submitting a PR.
-
----
-
 ## 📄 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** see the [LICENSE](LICENSE) file for details.
 
 
