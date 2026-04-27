@@ -1,6 +1,6 @@
 # 🛍️ Indra Web Apparel
 
-> A modern, full-stack e-commerce web application for an apparel brand — built with Next.js 14, TypeScript, Tailwind CSS, Prisma, and NextAuth.
+> A modern, full-stack e-commerce web application for an apparel brand built with Next.js 14, TypeScript, Tailwind CSS, Prisma, and NextAuth.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
@@ -35,7 +35,7 @@
 
 ## 🌐 Overview
 
-**Indra Web Apparel** is a production-ready e-commerce platform for an apparel brand. It supports the full shopping lifecycle — from browsing products to completing purchases — with a secure authentication system, a real-time shopping cart, a wishlist, and a powerful admin dashboard for managing inventory and orders.
+**Indra Web Apparel** is a production ready e-commerce platform for an apparel brand. It supports the full shopping lifecycle from browsing products to completing purchases with a secure authentication system, a real time shopping cart, a wishlist, and a powerful admin dashboard for managing inventory and orders.
 
 ---
 
