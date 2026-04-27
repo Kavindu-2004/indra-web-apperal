@@ -329,6 +329,4 @@ Please make sure your code passes linting (`npm run lint`) before submitting a P
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
----
 
-<p align="center">Built with ❤️ by <a href="https://github.com/Kavindu-2004">Kavindu</a></p>
